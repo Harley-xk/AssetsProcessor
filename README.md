@@ -6,3 +6,5 @@ Assets Processor is a simple tool to process your Xcode image assets.  Since tha
 3. Upscale 2x images to 3x if needs.
 4. Rename file names with the name set in image assets.
 5. Show all results of every image set after processing.
+
+[**Introduction in Chinese**](http://www.jianshu.com/p/6d1410687daa)
