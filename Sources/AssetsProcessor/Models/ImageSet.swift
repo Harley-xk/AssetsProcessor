@@ -44,6 +44,8 @@ class ImageSet: Model {
     
     var children: [ImageSet] = []
     
+    var error: Error?
+    
     init?(path: String) {
         let ext = path.pathExtension
         if let type = ImageSetType(rawValue: ext) {
@@ -428,13 +430,20 @@ extension ImageSet {
                 }
                 fileName = fileName.appendingPathExtension(ext)
                 let newPath = path.appendingPathComponent(fileName)
-                do {
-                    try FileManager.default.moveItem(atPath: filePath, toPath: newPath)
-                } catch {
-                    continue
+                
+                /// 替换前尝试移除原始文件（如果存在的话）
+                let fileManager = FileManager.default
+                if fileManager.fileExists(atPath: filePath), filePath != newPath {
+                    try? fileManager.removeItem(atPath: newPath)
+                    do {
+                        try FileManager.default.moveItem(atPath: filePath, toPath: newPath)
+                    } catch {
+                        self.error = error
+                        continue
+                    }
                 }
                 images[i][KeyImageFilename] = fileName
-                isChanged = true
+//                isChanged = true
             }
         }
     }
