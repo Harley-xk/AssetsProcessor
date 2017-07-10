@@ -17,4 +17,4 @@ Assets Processor is a simple tool to process your Xcode image assets.  Since tha
 	
 ### License
 
-This Software is under licenced under `GNU GENERAL PUBLIC LICENSE` Version 3, 29 June 2007. See the licence file for more infomation.
+This Software is licenced under `GNU GENERAL PUBLIC LICENSE` Version 3, 29 June 2007. See the licence file for more infomation.
